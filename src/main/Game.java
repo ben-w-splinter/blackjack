@@ -1,0 +1,37 @@
+package main;
+
+import card.Card;
+import card.Deck;
+import player.Player;
+
+
+public class Game {
+    private final Deck deck = new Deck();
+    private Player player;
+
+    public Game(String playerName){
+        this.player = new Player(playerName);
+        deck.populateDeck();
+    }
+
+    public Game(Player p){
+        this.player = p;
+        deck.populateDeck();
+    }
+
+    public void dealInitialHand(){
+        //Give player two cards
+        for (int i = 0; i < 2; i++){
+            Card c = deck.dealCard();
+            player.acceptCard(c);
+        }
+    }
+
+    public void playerHit(){
+        //Give player another card
+        Card c = deck.dealCard();
+        player.acceptCard(c);
+    }
+
+    public void playerStand(){}
+}

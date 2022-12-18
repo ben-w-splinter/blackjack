@@ -20,6 +20,7 @@ public class Player {
      */
     public void acceptCard(Card card){
         hand.add(card);
+        sum += card.getValue();
     }
     
     public int getScore() {

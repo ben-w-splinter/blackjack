@@ -3,7 +3,8 @@ package test;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-import main.Deck;
+
+import card.Deck;
 
 public class DeckTest {
 

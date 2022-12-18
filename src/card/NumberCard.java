@@ -1,4 +1,5 @@
-package main;
+package card;
+
 public class NumberCard extends Card {
     public NumberCard(int value) {
         //If the value is less than 2, set it to 2

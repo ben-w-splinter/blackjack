@@ -1,4 +1,4 @@
-package main;
+package card;
 /**
  * Represents a card in blackjack. Can have any value between 1 and 10
  */

@@ -1,13 +1,15 @@
-package main;
+package card;
+
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Random;
 
 /*
  * Represents a deck of cards in blackjack
  */
 public class Deck {
     private ArrayList<Card> cards = new ArrayList<>();
-
+    private Random random = new Random();
 
 
     /**
@@ -45,7 +47,17 @@ public class Deck {
                 cards.add(new Card(j));
             }
         }
-    }    
+    }
+    
+    public Card dealCard(){
+        //Fetch a radom card
+        int randomIndex = random.nextInt(cards.size());
+        Card randomCard = cards.get(randomIndex);
+        //Remove this card from the deck
+        cards.remove(randomIndex);
+        //Return the card
+        return randomCard;
+    }
     
     public ArrayList<Card> getCards() {
         return cards;

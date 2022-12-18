@@ -1,4 +1,5 @@
-package main;
+package card;
+
 public class AceCard extends Card {
 
     //Value must be 1 or 11

@@ -22,6 +22,14 @@ public class Player {
         hand.add(card);
         sum += card.getValue();
     }
+
+    /**
+     * Checks whether a player has gone bust
+     * @return sum is greater than 21
+     */
+    public boolean isBust(){
+        return sum > 21;
+    }
     
     public int getScore() {
         return score;

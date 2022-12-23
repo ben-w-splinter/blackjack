@@ -3,7 +3,7 @@ package card;
  * Represents a card in blackjack. Can have any value between 1 and 10
  */
 public class Card {
-    protected int value;
+    private int value;
 
     /**
      * Creates a new card
@@ -11,7 +11,7 @@ public class Card {
      */
     public Card(int value){
         if (value < 1) this.value = 1;
-        else if (value > 10) this.value = 10;
+        else if (value > 11) this.value = 11;
         else this.value = value;
     }
 

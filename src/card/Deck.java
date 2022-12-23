@@ -36,7 +36,8 @@ public class Deck {
 
         //Add aces
         for (int i = 0; i < 4; i++) {
-            cards.add(new AceCard(1));
+            //Assume all aces are highest value
+            cards.add(new AceCard(11));
         }
 
         //Add number cards

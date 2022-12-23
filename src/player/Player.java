@@ -46,4 +46,10 @@ public class Player {
     public ArrayList<Card> getHand(){
         return hand;
     }
+
+    public void displayHand(){
+        for (Card card : hand) {
+            System.out.println(card.toString());
+        }
+    }
 }

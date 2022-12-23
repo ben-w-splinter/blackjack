@@ -63,5 +63,14 @@ public class Deck {
     public ArrayList<Card> getCards() {
         return cards;
     }
+
+    @Override
+    public String toString() {
+        String retString = "";
+        for (Card card : cards) {
+            retString += card.toString() + ",";
+        }
+        return retString;
+    }
     
 }

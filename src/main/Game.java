@@ -9,11 +9,6 @@ public class Game {
     private final Deck deck = new Deck();
     private Player player;
 
-    public Game(String playerName){
-        this.player = new Player(playerName);
-        deck.populateDeck();
-    }
-
     public Game(Player p){
         this.player = p;
         deck.populateDeck();

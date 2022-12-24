@@ -15,10 +15,11 @@ import player.Player;
 
 public class PlayerTest {
     private final Player player = new Player("Alice");
-    private final Game game = new Game(player);
+    private final Game game = new Game();
 
     @Before
     public void setUp(){
+        game.setPlayer(player);
         game.dealInitialHand();
     }
     

@@ -2,6 +2,7 @@ package test;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import player.Player;
@@ -10,7 +11,13 @@ import main.Game;
 
 public class AceTest {
     private final Player player = new Player("Alice");
-    private final Game game = new Game(player);
+    private final Game game = new Game();
+
+    @Before
+    public void setUp(){
+        game.setPlayer(player);
+    }
+    
 
     @Test
     public void kingAndAceThen21(){

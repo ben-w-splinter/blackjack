@@ -25,6 +25,14 @@ public class Card {
 
     @Override
     public String toString() {
-        return String.valueOf(value);
+        String middleLine = value < 10 ? "|     " + String.valueOf(value) + "     |\n" : 
+                                         "|    " + String.valueOf(value) + "     |\n";
+        return "-------------\n" +
+               "|           |\n" +
+               "|           |\n" +
+                middleLine      +
+               "|           |\n" +
+               "|           |\n" +
+               "-------------\n";
     }
 }

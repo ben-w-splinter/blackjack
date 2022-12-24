@@ -18,7 +18,6 @@ public class Main {
         while (true){
             System.out.println("Would you like to 'hit' or 'stand'");
             String choice = scanner.nextLine();
-            System.out.println("You chose " + choice);
             if (choice.equals("hit")){
                 game.playerHit();
                 player.displayHand();
@@ -26,6 +25,7 @@ public class Main {
             }
             else if (choice.equals("stand")){
                 game.playerStand();
+                break;
             }
             if (player.isBust()){
                 System.out.println("Uh oh.... Looks like you are bust!");

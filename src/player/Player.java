@@ -1,7 +1,6 @@
 package player;
 
 import java.util.ArrayList;
-
 import card.Card;
 
 public class Player {
@@ -48,8 +47,18 @@ public class Player {
     }
 
     public void displayHand(){
-        for (Card card : hand) {
-            System.out.println(card.toString());
+        String[][] cardStrings = new String[hand.size()][];
+        for (int i = 0; i < hand.size(); i++) {
+            cardStrings[i] = hand.get(i).toString().split("\\r?\\n");
+        }
+        int cardHeight = cardStrings[0].length;
+        //For each row
+        for (int i = 0; i < cardHeight; i++) {
+            //For each card, print this row
+            for (String[] card: cardStrings){
+                System.out.print(card[i] + "   ");
+            }
+            System.out.println();
         }
     }
 }

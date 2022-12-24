@@ -38,4 +38,8 @@ public class Game {
     }
 
     public void playerStand(){}
+
+    public void setPlayer(Player p){
+        this.player = p;
+    }
 }

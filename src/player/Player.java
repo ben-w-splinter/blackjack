@@ -20,6 +20,8 @@ public class Player {
     public void acceptCard(Card card){
         hand.add(card);
         sum += card.getValue();
+        score = sum;
+        if (isBust()) score = 0;
     }
 
     /**

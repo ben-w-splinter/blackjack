@@ -29,13 +29,12 @@ public class Deck {
      * Populates the deck with a list of 52 cards according to the format of a standard deck
      */
     public void populateDeck(){
-        //Add picture Cards
-        for (int i = 0; i < 12; i++) {
-            cards.add(new PictureCard());    
-        }
-
-        //Add aces
+        char[] titles = {'J', 'Q', 'K'};
+        //Add aces and picture cards
         for (int i = 0; i < 4; i++) {
+            for (char title: titles) {
+                cards.add(new PictureCard(title));
+            }
             //Assume all aces are highest value
             cards.add(new AceCard(11));
         }

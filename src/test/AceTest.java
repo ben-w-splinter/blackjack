@@ -22,7 +22,7 @@ public class AceTest {
     @Test
     public void kingAndAceThen21(){
         game.dealInitialHand(new Card[]{
-            new PictureCard(),
+            new PictureCard('K'),
             new AceCard(11)
         });
         int playerSum = player.getSum();
@@ -32,8 +32,8 @@ public class AceTest {
     @Test
     public void kingQueenAndAceThen21(){
         game.dealInitialHand(new Card[]{
-            new PictureCard(),
-            new PictureCard(),
+            new PictureCard('K'),
+            new PictureCard('Q'),
             new AceCard(1)
         });
         int playerSum = player.getSum();

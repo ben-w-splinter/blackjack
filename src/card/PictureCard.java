@@ -1,8 +1,11 @@
 package card;
 
 public class PictureCard extends Card {
-    public PictureCard() {
+    private char title;
+
+    public PictureCard(char title) {
         super(10);
+        this.title = title;
     }
 
     @Override
@@ -10,7 +13,7 @@ public class PictureCard extends Card {
         return "-------------\n" +
                "|           |\n" +
                "|           |\n" +
-               "|     J     |\n" +
+               "|     " + title + "     |\n" +
                "|           |\n" +
                "|           |\n" +
                "-------------\n";

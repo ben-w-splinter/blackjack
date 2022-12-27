@@ -6,9 +6,19 @@ public class Main {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         final Game game = new Game();
-        System.out.println("Welcome to Blackjack!");
-        System.out.println("Enter the number of players: ");
-        int numberOfPlayers = scanner.nextInt();
+        System.out.println("Welcome to Blackjack!"); 
+        System.out.println("Enter the number of players: "); 
+        int numberOfPlayers;
+        //Continue to ask for number of players until a valid number is inputted
+        while (true){    
+            try{
+                numberOfPlayers = Integer.parseInt(scanner.nextLine());
+                break;
+            } catch(NumberFormatException e){
+                System.out.println("Please enter a valid number");
+                continue;
+            }
+        }
         for (int i = 0; i < numberOfPlayers; i++) {
             System.out.println("Player " + (i+1) + " please enter your name: ");
             String name = scanner.next();

@@ -7,6 +7,17 @@ public class AceCard extends Card {
         super(value == 1 || value == 11 ? value : 1);
     }
 
+    /**
+     * Sets a new value for the card
+     * @param value a value either 1 or 11
+     */
+    public void setValue(int value){
+        //Value must be 1 or 11
+        this.value = value == 1 || value == 11 
+                     ? value 
+                     : 1;
+    }
+
     @Override
     public String toString() {
             return "-------------\n" +

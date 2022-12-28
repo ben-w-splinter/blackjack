@@ -3,7 +3,7 @@ package card;
  * Represents a card in blackjack. Can have any value between 1 and 10
  */
 public class Card {
-    private int value;
+    protected int value;
 
     /**
      * Creates a new card

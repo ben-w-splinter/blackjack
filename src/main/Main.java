@@ -35,6 +35,8 @@ public class Main {
                         j++;
                     }
                     player.evaluateSum();
+                    System.out.println("Sum = " + player.getSum());
+
                 }
                 if (player.isBust()){
                     System.out.println("Uh oh.... Looks like you are bust!");

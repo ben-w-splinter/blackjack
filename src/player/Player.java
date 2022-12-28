@@ -1,12 +1,15 @@
 package player;
 
 import java.util.ArrayList;
+
+import card.AceCard;
 import card.Card;
 
 public class Player {
     private int sum = 0;
     private String name;
     private ArrayList<Card> hand = new ArrayList<>();
+    private ArrayList<AceCard> aces = new ArrayList<>();
     
     public Player(String name) {
         this.name = name;
@@ -18,6 +21,7 @@ public class Player {
      */
     public void acceptCard(Card card){
         hand.add(card);
+        if (card instanceof AceCard) aces.add((AceCard) card);
         sum += card.getValue();
     }
 
@@ -27,6 +31,16 @@ public class Player {
      */
     public boolean isBust(){
         return sum > 21;
+    }
+
+    /*
+     * Forces player to revaluate their sum if their values have changed
+     */
+    public void evaluateSum(){
+        sum = 0;
+        for (Card card: hand){
+            sum += card.getValue();
+        }
     }
     
     public int getScore() {
@@ -43,6 +57,14 @@ public class Player {
 
     public ArrayList<Card> getHand(){
         return hand;
+    }
+
+    public ArrayList<AceCard> getAces(){
+        return aces;
+    }
+
+    public boolean hasAces(){
+        return aces.size() > 0;
     }
 
     public void displayHand(){

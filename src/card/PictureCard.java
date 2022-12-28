@@ -13,7 +13,9 @@ public class PictureCard extends Card {
         return "-------------\n" +
                "|           |\n" +
                "|           |\n" +
+               "|           |\n" +
                "|     " + title + "     |\n" +
+               "|           |\n" +
                "|           |\n" +
                "|           |\n" +
                "-------------\n";

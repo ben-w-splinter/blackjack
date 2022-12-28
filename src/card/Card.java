@@ -30,7 +30,9 @@ public class Card {
         return "-------------\n" +
                "|           |\n" +
                "|           |\n" +
+               "|           |\n" +
                 middleLine      +
+               "|           |\n" +
                "|           |\n" +
                "|           |\n" +
                "-------------\n";

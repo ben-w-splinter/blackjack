@@ -23,7 +23,9 @@ public class AceCard extends Card {
             return "-------------\n" +
                    "|           |\n" +
                    "|           |\n" +
+                   "|           |\n" +
                    "|     A     |\n" +
+                   "|           |\n" +
                    "|           |\n" +
                    "|           |\n" +
                    "-------------\n";

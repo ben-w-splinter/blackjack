@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import card.Card;
 
 public class Player {
-    private int score = 0;
     private int sum = 0;
     private String name;
     private ArrayList<Card> hand = new ArrayList<>();
@@ -20,8 +19,6 @@ public class Player {
     public void acceptCard(Card card){
         hand.add(card);
         sum += card.getValue();
-        score = sum;
-        if (isBust()) score = 0;
     }
 
     /**
@@ -33,7 +30,7 @@ public class Player {
     }
     
     public int getScore() {
-        return score;
+        return isBust() ? 0 : sum;
     }
 
     public int getSum() {

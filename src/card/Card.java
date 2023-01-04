@@ -31,7 +31,7 @@ public class Card {
                "|           |\n" +
                "|           |\n" +
                "|           |\n" +
-                middleLine      +
+                middleLine       +
                "|           |\n" +
                "|           |\n" +
                "|           |\n" +

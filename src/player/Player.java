@@ -1,6 +1,8 @@
 package player;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import card.AceCard;
 import card.Card;
@@ -67,6 +69,10 @@ public class Player {
         return aces.size() > 0;
     }
 
+    /**
+     * Displays the player's hand to the terminal with cards
+     * appearing in a row
+     */
     public void displayHand(){
         String[][] cardStrings = new String[hand.size()][];
         for (int i = 0; i < hand.size(); i++) {
@@ -81,5 +87,20 @@ public class Player {
             }
             System.out.println();
         }
+    }
+
+    /**
+     * Returns true if the player has a pair of cards
+     * @return true if there is a pair, false if not
+     */
+    public boolean hasPair(){
+        Set<Card> seenCards = new HashSet<Card>();
+        for (Card c: hand){
+            if (seenCards.contains(c)){
+                return true;
+            }
+            seenCards.add(c);
+        }
+        return false;
     }
 }

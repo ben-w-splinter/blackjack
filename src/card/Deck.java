@@ -35,8 +35,8 @@ public class Deck {
             for (char title: titles) {
                 cards.add(new PictureCard(title));
             }
-            //Assume all aces are highest value
-            cards.add(new AceCard(11));
+            //Assume all aces are lowest value
+            cards.add(new AceCard(1));
         }
 
         //Add number cards

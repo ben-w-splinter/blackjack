@@ -26,17 +26,17 @@ public class PlayerTest {
     @Test
     public void initialDealGivesTwoCards(){
         //Fetch their hand
-        ArrayList<Card> cards = player.getHand();
+        ArrayList<Card> cards = player.getHands();
         //Should have two cards
         assertEquals(2, cards.size());
     }
 
     @Test
     public void whenHitThenReceiveCard(){
-        int beforeLength = player.getHand().size();
+        int beforeLength = player.getHands().size();
         //Player chooses hit
         game.playerHit();
-        int afterLength = player.getHand().size();
+        int afterLength = player.getHands().size();
         //Player should have received one card
         assertEquals(beforeLength + 1, afterLength);
     }

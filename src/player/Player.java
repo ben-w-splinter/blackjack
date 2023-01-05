@@ -1,20 +1,21 @@
 package player;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Collections;
 
 import card.AceCard;
 import card.Card;
 
 public class Player {
-    private int sum = 0;
     private String name;
-    private ArrayList<Card> hand = new ArrayList<>();
+    private Hand currentHand = new Hand();
+    private int currentHandPosition = 0;
+    private ArrayList<Hand> hands = new ArrayList<>();
     private ArrayList<AceCard> aces = new ArrayList<>();
     
     public Player(String name) {
         this.name = name;
+        hands.add(currentHandPosition, currentHand);
     }
     
     /**
@@ -22,9 +23,46 @@ public class Player {
      * @param card the card to be added
      */
     public void acceptCard(Card card){
-        hand.add(card);
-        if (card instanceof AceCard) aces.add((AceCard) card);
-        sum += card.getValue();
+        currentHand.addCard(card);
+    }
+
+    /**
+     * Adds a new hand to the players deck
+     */
+    public void addHand(){
+        hands.add(new Hand());
+    }
+
+    public void resolveHand(){
+        //Check if we have no more hands
+        if (!hasHands()) return;
+        //Get the next hand in the list
+        currentHandPosition ++;
+        currentHand = hands.get(currentHandPosition);
+    }
+
+    /**
+     * Splits the players hand and adds the two new cards
+     */
+    public void splitHand(Card[] cards) {
+        //Create two a new hands
+        Hand newHand1 = new Hand();
+        Hand newHand2 = new Hand();
+        //Add the last card of our current hand and one of the new cards to it
+        newHand1.addCard(currentHand.getCards().get(0));
+        newHand1.addCard(cards[0]);
+        //Add the last card of our current hand and one of the new cards to it
+        newHand2.addCard(currentHand.getCards().get(1));
+        newHand2.addCard(cards[1]);
+        //Set these to be our new hands
+        hands.set(0, newHand1);
+        hands.add(newHand2);
+        //Set the current hand
+        currentHand = newHand1;
+    }
+
+    public boolean hasHands(){
+        return (hands()-1) != currentHandPosition;
     }
 
     /**
@@ -32,60 +70,62 @@ public class Player {
      * @return sum is greater than 21
      */
     public boolean isBust(){
-        return sum > 21;
+        return currentHand.isBust();
     }
 
     /*
      * Forces player to revaluate their sum if their values have changed
      */
     public void evaluateSum(){
-        sum = 0;
-        for (Card card: hand){
-            sum += card.getValue();
+        for (Hand h: hands){
+            h.evaluateSum();
         }
     }
     
     public int getScore() {
-        return isBust() ? 0 : sum;
+        return Collections.max(hands, (h1, h2) -> h1.getScore() - h2.getScore()).getScore();
     }
 
     public int getSum() {
-        return sum;
+        return currentHand.getSum();
     }
 
     public String getName(){
         return name;
     }
 
-    public ArrayList<Card> getHand(){
-        return hand;
+    public ArrayList<Card> getHands(){
+        return currentHand.getCards();
+    }
+
+    public int hands(){
+        return hands.size();
     }
 
     public ArrayList<AceCard> getAces(){
-        return aces;
+        return currentHand.getAces();
     }
 
     public boolean hasAces(){
-        return aces.size() > 0;
+        return currentHand.hasAces();
     }
 
     /**
      * Displays the player's hand to the terminal with cards
      * appearing in a row
      */
-    public void displayHand(){
-        String[][] cardStrings = new String[hand.size()][];
-        for (int i = 0; i < hand.size(); i++) {
-            cardStrings[i] = hand.get(i).toString().split("\\r?\\n");
+    public void displayHands(){
+        if (hands() == 1){
+            currentHand.displayHand();
+            System.out.println("Sum = " + currentHand.getSum());
         }
-        int cardHeight = cardStrings[0].length;
-        //For each row
-        for (int i = 0; i < cardHeight; i++) {
-            //For each card, print this row
-            for (String[] card: cardStrings){
-                System.out.print(card[i] + "   ");
+        else{
+            for (int i = 0; i < hands(); i ++){
+                System.out.println("Hand " + (i+1));
+                hands.get(i).displayHand();
+                System.out.println("Sum = " + hands.get(i).getSum());
+
             }
-            System.out.println();
         }
     }
 
@@ -94,13 +134,14 @@ public class Player {
      * @return true if there is a pair, false if not
      */
     public boolean hasPair(){
-        Set<Card> seenCards = new HashSet<Card>();
-        for (Card c: hand){
-            if (seenCards.contains(c)){
-                return true;
-            }
-            seenCards.add(c);
-        }
-        return false;
+        return currentHand.hasPair();
     }
+
+    public void nextHand() {
+        if (!hasHands()) return;
+        //Get the next hand in the list
+        currentHandPosition ++;
+        currentHand = hands.get(currentHandPosition);
+    }
+
 }

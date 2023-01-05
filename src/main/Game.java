@@ -10,7 +10,7 @@ import player.Player;
 
 public class Game {
     private final Deck deck = new Deck();
-    private ArrayList<Player> players = new ArrayList<>();
+    private final ArrayList<Player> players = new ArrayList<>();
     private Player player;
 
     public Game(){
@@ -47,9 +47,24 @@ public class Game {
     }
 
     /**
-     * Test Method - does nothing
+     * Resolves the current players hand
      */
-    public void playerStand(){}
+    public void playerStand(){
+        player.resolveHand();
+    }
+
+    /**
+     * Adds an additional hand to the player's
+     * deck
+     */
+    public void playerSplit() {
+        //Split the players hand, adding
+        //two more cards
+        player.splitHand(new Card[]{
+            deck.dealCard(),
+            deck.dealCard()
+        });
+    }
 
     /**
      * Adds the current player to the list of players
@@ -83,4 +98,5 @@ public class Game {
         }
         return (String[]) winners.toArray(new String[winners.size()]);
     }
+
 }

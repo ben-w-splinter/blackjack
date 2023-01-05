@@ -2,6 +2,8 @@ package main;
 import java.util.Scanner;
 
 import card.AceCard;
+import card.Card;
+import card.NumberCard;
 import player.Player;
 
 public class Main {
@@ -18,9 +20,11 @@ public class Main {
             final Player player = new Player(name);
             game.setPlayer(player);
             System.out.println("Let's deal the initial hand");
-            game.dealInitialHand();
-            player.displayHand();
-            System.out.println("Sum = " + player.getSum());
+            game.dealInitialHand(new Card[]{
+                new NumberCard(8),
+                new NumberCard(8)
+            });
+            player.displayHands();
             while (true){                
                 if (player.hasAces()){
                     int j = 1;
@@ -36,25 +40,41 @@ public class Main {
                     }
                     player.evaluateSum();
                     System.out.println("Sum = " + player.getSum());
-
+                }
+                if (player.getHands().size() == 2 && player.hasPair()){
+                    System.out.println("Looks like you have a pair. Would you like to split [y/n]");
+                    String choice = scanner.next();
+                    if (choice.equals("y")){
+                        game.playerSplit();
+                        player.displayHands();
+                    }
                 }
                 if (player.isBust()){
                     System.out.println("Uh oh.... Looks like you are bust!");
-                    game.completeRound();
-                    break;
+                    if (player.hasHands()){
+                        player.nextHand();
+                    }
+                    else{
+                        game.completeRound();
+                        break;
+                    }
                 }
                 System.out.println("Would you like to 'hit' or 'stand'");
                 String choice = scanner.next();                
 
                 if (choice.equals("hit")){
                     game.playerHit();
-                    player.displayHand();   
+                    player.displayHands();   
                 }
                 else if (choice.equals("stand")){
-                    game.completeRound();
-                    break;
+                    if (player.hasHands()){
+                        player.nextHand();
+                    }
+                    else{
+                        game.completeRound();
+                        break;
+                    };
                 }
-                System.out.println("Sum = " + player.getSum());
             }
         }
         scanner.close();

@@ -11,7 +11,6 @@ public class Player {
     private Hand currentHand = new Hand();
     private int currentHandPosition = 0;
     private ArrayList<Hand> hands = new ArrayList<>();
-    private ArrayList<AceCard> aces = new ArrayList<>();
     
     public Player(String name) {
         this.name = name;

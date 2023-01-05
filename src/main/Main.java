@@ -2,8 +2,6 @@ package main;
 import java.util.Scanner;
 
 import card.AceCard;
-import card.Card;
-import card.NumberCard;
 import player.Player;
 
 public class Main {
@@ -20,10 +18,7 @@ public class Main {
             final Player player = new Player(name);
             game.setPlayer(player);
             System.out.println("Let's deal the initial hand");
-            game.dealInitialHand(new Card[]{
-                new NumberCard(8),
-                new NumberCard(8)
-            });
+            game.dealInitialHand();
             player.displayHands();
             while (true){                
                 if (player.hasAces()){

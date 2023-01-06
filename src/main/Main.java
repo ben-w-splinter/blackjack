@@ -2,6 +2,8 @@ package main;
 import java.util.Scanner;
 
 import card.AceCard;
+import card.Card;
+import card.NumberCard;
 import player.Player;
 
 public class Main {
@@ -42,6 +44,7 @@ public class Main {
                     if (choice.equals("y")){
                         game.playerSplit();
                         player.displayHands();
+                        continue;
                     }
                 }
                 if (player.isBust()){
@@ -54,7 +57,7 @@ public class Main {
                         break;
                     }
                 }
-                System.out.println("Would you like to 'hit' or 'stand'");
+                System.out.println("Would you like to 'hit' or 'stand'" + (player.hands() == 1 ? "" : " on Hand " + (player.getCurrentHandPosition() + 1)));
                 String choice = scanner.next();                
 
                 if (choice.equals("hit")){

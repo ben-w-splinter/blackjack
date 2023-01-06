@@ -143,4 +143,8 @@ public class Player {
         currentHand = hands.get(currentHandPosition);
     }
 
+    public int getCurrentHandPosition(){
+        return currentHandPosition;
+    }
+
 }

@@ -7,9 +7,11 @@ import java.util.Set;
 import card.AceCard;
 import card.Card;
 
+/**
+ * Class to represent a hand of Cards in BlackJack
+ */
 public class Hand {
     private int sum = 0;
-    private String name;
     private ArrayList<Card> cards = new ArrayList<>();
     private ArrayList<AceCard> aces = new ArrayList<>();
     
@@ -41,26 +43,38 @@ public class Hand {
         }
     }
     
+    /**
+     * Gets the score of the hand
+     * @return the sum of the hand or 0 if the hand is bust
+     */
     public int getScore() {
         return isBust() ? 0 : sum;
     }
 
+    /**
+     * @return sum of the value's of the cards in the hand
+     */
     public int getSum() {
         return sum;
     }
 
-    public String getName(){
-        return name;
-    }
-
+    /**
+     * @return all cards in the hand
+     */
     public ArrayList<Card> getCards(){
         return cards;
     }
 
+    /**
+     * @return All aces in the hand
+     */
     public ArrayList<AceCard> getAces(){
         return aces;
     }
 
+    /**
+     * @return true if the hand contains aces, false if not
+     */
     public boolean hasAces(){
         return aces.size() > 0;
     }

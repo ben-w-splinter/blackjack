@@ -1,8 +1,16 @@
 package card;
 
+/**
+ * Represents a Picture card in BlackJack
+ */
 public class PictureCard extends Card {
     private char title;
 
+    /**
+     * Initializes a new picture card with a given title
+     * @param title a character to represent the card's title
+     * (i.e. 'J','K','Q')
+     */
     public PictureCard(char title) {
         super(10);
         this.title = title;

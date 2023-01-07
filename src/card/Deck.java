@@ -49,6 +49,10 @@ public class Deck {
         }
     }
     
+    /**
+     * Deals a random card, removing the from the deck
+     * @return the dealt card
+     */
     public Card dealCard(){
         //Fetch a radom card
         int randomIndex = random.nextInt(cards.size());
@@ -59,6 +63,10 @@ public class Deck {
         return randomCard;
     }
     
+    /**
+     * Returns all cards in the deck
+     * @return all cards in the deck
+     */
     public ArrayList<Card> getCards() {
         return cards;
     }

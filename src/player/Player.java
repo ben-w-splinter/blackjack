@@ -6,7 +6,7 @@ import java.util.Collections;
 import card.AceCard;
 import card.Card;
 
-public class Player {
+public class Player{
     private String name;
     private Hand currentHand = new Hand();
     private int currentHandPosition = 0;
@@ -18,7 +18,7 @@ public class Player {
     }
     
     /**
-     * Adds a card to the players hand
+     * Adds a card to the players current hand
      * @param card the card to be added
      */
     public void acceptCard(Card card){
@@ -26,12 +26,15 @@ public class Player {
     }
 
     /**
-     * Adds a new hand to the players deck
+     * Adds a new hand to the players hands
      */
     public void addHand(){
         hands.add(new Hand());
     }
 
+    /**
+     * Marks the current hand as no longer in use and moves on to the next
+     */
     public void resolveHand(){
         //Check if we have no more hands
         if (!hasHands()) return;
@@ -60,6 +63,9 @@ public class Player {
         currentHand = newHand1;
     }
 
+    /**
+     * @return true if there are any more hands available to play, false if not
+     */
     public boolean hasHands(){
         return (hands()-1) != currentHandPosition;
     }
@@ -81,30 +87,51 @@ public class Player {
         }
     }
     
+    /**
+     * @return The score of the hand with the best score
+     */
     public int getScore() {
         return Collections.max(hands, (h1, h2) -> h1.getScore() - h2.getScore()).getScore();
     }
 
+    /**
+     * @return sum of the current hand
+     */
     public int getSum() {
         return currentHand.getSum();
     }
 
+    /**
+     * @return the name of the player
+     */
     public String getName(){
         return name;
     }
 
-    public ArrayList<Card> getHands(){
+    /**
+     * @return gets all cards in the current hand
+     */
+    public ArrayList<Card> getCards(){
         return currentHand.getCards();
     }
 
+    /**
+     * @return the number of hands the player has
+     */
     public int hands(){
         return hands.size();
     }
 
+    /**
+     * @return all aces in the players current hand
+     */
     public ArrayList<AceCard> getAces(){
         return currentHand.getAces();
     }
 
+    /**
+     * @return true if the player has aces in their hand false if not
+     */
     public boolean hasAces(){
         return currentHand.hasAces();
     }
@@ -136,13 +163,9 @@ public class Player {
         return currentHand.hasPair();
     }
 
-    public void nextHand() {
-        if (!hasHands()) return;
-        //Get the next hand in the list
-        currentHandPosition ++;
-        currentHand = hands.get(currentHandPosition);
-    }
-
+    /**
+     * @return the index of the current hand the player is using
+     */
     public int getCurrentHandPosition(){
         return currentHandPosition;
     }

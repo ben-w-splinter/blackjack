@@ -1,5 +1,8 @@
 package card;
 
+/**
+ * A class to represent an Ace Card in BlackJack
+ */
 public class AceCard extends Card {
 
     //Value must be 1 or 11

@@ -7,12 +7,17 @@ import card.Card;
 import card.Deck;
 import player.Player;
 
-
+/**
+ * A class to simulate a game of BlackJack
+ */
 public class Game {
     private final Deck deck = new Deck();
     private final ArrayList<Player> players = new ArrayList<>();
     private Player player;
 
+    /**
+     * Creates a new game and populates the deck with cards
+     */
     public Game(){
         deck.populateDeck();
     }
